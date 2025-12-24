@@ -1,4 +1,2 @@
-.venv
-
 tsm/checkpoints/sam2/sam2.1_hiera_small.pt
 tsm/checkpoints/fastvit/fastvit_ma36.pth.tar
