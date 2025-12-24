@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 
+
 const greetMsg = ref("");
 const name = ref("");
 
@@ -13,7 +14,7 @@ async function greet() {
 
 <template>
   <main class="container">
-    <h1>Welcome to Tauri + Vue</h1>
+    <h1 class="text-4xl font-bold">Welcome to Tauri + Vue</h1>
 
     <div class="row">
       <a href="https://vite.dev" target="_blank">
