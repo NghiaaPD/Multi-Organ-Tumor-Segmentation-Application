@@ -47,6 +47,9 @@ def build_fastvit(
     config_name = config_file
     if config_name.endswith(".yaml"):
         config_name = config_name[:-5]
+    from hydra.core.global_hydra import GlobalHydra
+    if GlobalHydra.instance().is_initialized():
+        GlobalHydra.instance().clear()
     with initialize(config_path=config_path, job_name="fastvit_job"):
         cfg = compose(config_name=config_name, overrides=hydra_overrides_extra)
         OmegaConf.resolve(cfg)

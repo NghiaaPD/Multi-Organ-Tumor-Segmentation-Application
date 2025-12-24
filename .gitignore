@@ -2,3 +2,5 @@
 
 tsm/checkpoints/sam2/sam2.1_hiera_small.pt
 tsm/checkpoints/fastvit/fastvit_ma36.pth.tar
+
+/Multi-Organ-Tumor-Segmentation-Application/multi_organ_tumor_segmentation_application.egg-info
