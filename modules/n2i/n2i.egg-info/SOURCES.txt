@@ -1,0 +1,8 @@
+n2i.c
+pyproject.toml
+setup.py
+n2i.egg-info/PKG-INFO
+n2i.egg-info/SOURCES.txt
+n2i.egg-info/dependency_links.txt
+n2i.egg-info/requires.txt
+n2i.egg-info/top_level.txt

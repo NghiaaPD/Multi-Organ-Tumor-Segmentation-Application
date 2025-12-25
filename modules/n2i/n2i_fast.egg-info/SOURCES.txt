@@ -1,0 +1,7 @@
+pyproject.toml
+setup.py
+n2i_fast.egg-info/PKG-INFO
+n2i_fast.egg-info/SOURCES.txt
+n2i_fast.egg-info/dependency_links.txt
+n2i_fast.egg-info/requires.txt
+n2i_fast.egg-info/top_level.txt

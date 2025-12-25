@@ -22,7 +22,7 @@ def train_one_epoch(
 	mixup_fn=None,
 	wd_scheduler=None,
 ):
-	from timm.utils import AverageMeter, dispatch_clip_grad, model_parameters, reduce_tensor
+	from timm.utils import AverageMeter, dispatch_clip_grad, reduce_tensor
 	if args.mixup_off_epoch and epoch >= args.mixup_off_epoch:
 		if args.prefetcher and loader.mixup_enabled:
 			loader.mixup_enabled = False
@@ -63,16 +63,14 @@ def train_one_epoch(
 				optimizer,
 				clip_grad=args.clip_grad,
 				clip_mode=args.clip_mode,
-				parameters=model_parameters(
-					model, exclude_head="agc" in args.clip_mode
-				),
+				parameters=[p for n, p in model.named_parameters() if not ("agc" in args.clip_mode and "head" in n)],
 				create_graph=second_order,
 			)
 		else:
 			loss.backward(create_graph=second_order)
 			if args.clip_grad is not None:
 				dispatch_clip_grad(
-					model_parameters(model, exclude_head="agc" in args.clip_mode),
+					[p for n, p in model.named_parameters() if not ("agc" in args.clip_mode and "head" in n)],
 					value=args.clip_grad,
 					mode=args.clip_mode,
 				)

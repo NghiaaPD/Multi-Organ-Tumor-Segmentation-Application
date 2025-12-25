@@ -3,7 +3,7 @@ from PIL import Image
 import torch
 import torchvision.transforms as T
 from tsm.model.classification_model import builder
-import tsm.model.classification_model.fastvit.fastvit_predictor as fastvit_predictor
+from tsm.model.classification_model.fastvit.fastvit_predictor import FastViTPredictor
 import os
 
 def main():
@@ -30,7 +30,9 @@ def main():
         device="cuda",
         mode="eval"
     )
-    output = fastvit_predictor.fastvit_predict(model, input_tensor=input_tensor, device="cuda")
+    predictor = FastViTPredictor(model, device="cuda")
+    predictor.set_image(input_tensor)
+    output = predictor.predict()
     import torch.nn.functional as F
     logger.info(f"Output shape: {output.shape}")
     logger.info(f"Output logits: {output}")

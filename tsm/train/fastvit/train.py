@@ -813,6 +813,7 @@ parser.add_argument(
     help="Test/inference time augmentation (oversampling) factor. 0=None (default: 0)",
 )
 parser.add_argument("--local_rank", default=0, type=int)
+parser.add_argument("--local-rank", dest="local_rank", default=0, type=int, help="local rank for distributed training")
 parser.add_argument(
     "--use-multi-epochs-loader",
     action="store_true",
@@ -918,7 +919,6 @@ def main():
         drop_path_rate=args.drop_path,
         drop_block_rate=args.drop_block,
         global_pool=args.gp,
-        bn_tf=args.bn_tf,
         bn_momentum=args.bn_momentum,
         bn_eps=args.bn_eps,
         scriptable=args.torchscript,
@@ -1015,16 +1015,18 @@ def main():
             )
         else:
             print(
-                "Finetune option selected, not loading optimizer state and loss_scaler"
+                "Finetune option selected, not loading optimizer state và loss_scaler, sẽ load checkpoint với strict=False"
             )
-            _ = resume_checkpoint(
-                model,
-                args.resume,
-                optimizer=None,
-                loss_scaler=None,
-                log_info=args.local_rank == 0,
-            )
-
+            # Tải checkpoint với strict=False để bỏ qua các layer không khớp
+            checkpoint = torch.load(args.resume, map_location="cpu")
+            if "state_dict" in checkpoint:
+                state_dict = checkpoint["state_dict"]
+            else:
+                state_dict = checkpoint
+            missing, unexpected = model.load_state_dict(state_dict, strict=False)
+            if args.local_rank == 0:
+                print(f"[Finetune] Missing keys: {missing}")
+                print(f"[Finetune] Unexpected keys: {unexpected}")
             data_config["crop_pct"] = 1.0
             print("data config: {}".format(data_config))
 
