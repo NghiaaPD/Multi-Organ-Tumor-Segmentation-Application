@@ -8,3 +8,4 @@ tsm/checkpoints/fastvit/fastvit_ma36.pth.tar
 tsm/model/external/ccl3d/ccl3d.egg-info
 tsm/model/external/ccl3d/connected_components_3d.egg-info
 tsm/model/external/ccl3d/build
+resource/video/**
