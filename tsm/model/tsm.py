@@ -108,21 +108,3 @@ class TwoStageModel(nn.Module):
             masks, ious, low_res_masks = seg_predictor.predict(*args, **kwargs)
 
         return masks, ious, low_res_masks
-
-
-# Example usage:
-# class_model_cfg = {'config_file': 'fastvit_t8.yaml', 'ckpt_path': 'fastvit_t8_reparam.pth.tar'}
-# class_to_seg_ckpt_cfg = {
-#     0: ("sam2.1_hiera_s.yaml", "sam2.1_hiera_small.pt"),
-#     1: ("sam2.1_hiera_b+.yaml", "sam2.1_hiera_base_plus.pt"),
-#     # ...
-# }
-# model = TwoStageModel(
-#     class_model_cfg=class_model_cfg,
-#     class_to_seg_ckpt_cfg=class_to_seg_ckpt_cfg,
-#     device="cuda",
-#     max_seg_cache_size=3  # chỉ giữ tối đa 3 model SAM2 trong GPU
-# )
-#
-# # Inference
-# masks, ious, low_res_masks = model(image_tensor_or_np, multimask_output=True)

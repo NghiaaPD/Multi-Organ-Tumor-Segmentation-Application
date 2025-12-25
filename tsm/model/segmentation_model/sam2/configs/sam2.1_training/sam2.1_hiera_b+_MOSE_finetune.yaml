@@ -64,7 +64,7 @@ trainer:
   model:
     _target_: training.model.sam2.SAM2Train
     image_encoder:
-      _target_: sam2.modeling.backbones.image_encoder.ImageEncoder
+      _target_: tsm.model.segmentation_model.sam2.modeling.backbones.image_encoder.ImageEncoder
       scalp: 1
       trunk:
         _target_: tsm.model.segmentation_model.sam2.modeling.backbones.hieradet.Hiera
@@ -121,20 +121,20 @@ trainer:
       _target_: tsm.model.segmentation_model.sam2.modeling.memory_encoder.MemoryEncoder
       out_dim: 64
       position_encoding:
-        _target_: sam2.modeling.position_encoding.PositionEmbeddingSine
+        _target_: tsm.model.segmentation_model.sam2.modeling.position_encoding.PositionEmbeddingSine
         num_pos_feats: 64
         normalize: true
         scale: null
         temperature: 10000
       mask_downsampler:
-        _target_: sam2.modeling.memory_encoder.MaskDownSampler
+        _target_: tsm.model.segmentation_model.sam2.modeling.memory_encoder.MaskDownSampler
         kernel_size: 3
         stride: 2
         padding: 1
       fuser:
-        _target_: sam2.modeling.memory_encoder.Fuser
+        _target_: tsm.model.segmentation_model.sam2.modeling.memory_encoder.Fuser
         layer:
-          _target_: sam2.modeling.memory_encoder.CXBlock
+          _target_: tsm.model.segmentation_model.sam2.modeling.memory_encoder.CXBlock
           dim: 256
           kernel_size: 7
           padding: 3
