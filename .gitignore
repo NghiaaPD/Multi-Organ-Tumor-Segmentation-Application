@@ -4,3 +4,7 @@ tsm/checkpoints/sam2/sam2.1_hiera_small.pt
 tsm/checkpoints/fastvit/fastvit_ma36.pth.tar
 
 /Multi-Organ-Tumor-Segmentation-Application/multi_organ_tumor_segmentation_application.egg-info
+
+tsm/model/external/ccl3d/ccl3d.egg-info
+tsm/model/external/ccl3d/connected_components_3d.egg-info
+tsm/model/external/ccl3d/build
