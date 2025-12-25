@@ -11,6 +11,6 @@ tsm/model/external/ccl3d/connected_components_3d.egg-info
 tsm/model/external/ccl3d/build
 resource/video/**
 
-output/**
+output/*/
 
 data/MOTSA_classification
