@@ -12,7 +12,6 @@
 : ${DROP_PATH:=0.2}
 
 
-# Run distributed training
 python -m torch.distributed.launch --nproc_per_node=$NPROC_PER_NODE tsm/train/fastvit/train.py \
     "$DATASET_DIR" \
     --model $MODEL \
@@ -22,6 +21,7 @@ python -m torch.distributed.launch --nproc_per_node=$NPROC_PER_NODE tsm/train/fa
     --output "$OUTPUT_DIR" \
     --input-size $INPUT_SIZE \
     --drop-path $DROP_PATH \
+    --num-classes 3 \
     --finetune \
     --resume "tsm/checkpoints/fastvit/fastvit_ma36_reparam.pth.tar"
 
