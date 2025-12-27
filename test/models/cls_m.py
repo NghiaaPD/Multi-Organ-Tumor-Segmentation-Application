@@ -8,8 +8,8 @@ import os
 
 def main():
     model_config = "fastvit_ma36.yaml"
-    ckpt_path = "/mnt/data/coden/Multi-Organ-Tumor-Segmentation-Application/tsm/checkpoints/fastvit/fastvit_ma36.pth.tar"
-    img_path = "/mnt/data/coden/Multi-Organ-Tumor-Segmentation-Application/resource/images/Nokota_Horses_cropped.jpg"
+    ckpt_path = "output/20251226-024026-fastvit_ma36-256/model_best.pth.tar"
+    img_path = "data/MOTSA_classification/validation/liver/img87.jpeg"
     if not os.path.exists(img_path):
         img = Image.new("RGB", (256, 256), color=(123, 222, 111))
         img.save(img_path)

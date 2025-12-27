@@ -55,7 +55,7 @@ def build_fastvit(
         OmegaConf.resolve(cfg)
         model = instantiate(cfg.model, _recursive_=True)
         if ckpt_path is not None:
-            sd = torch.load(ckpt_path, map_location="cpu")
+            sd = torch.load(ckpt_path, map_location="cpu", weights_only=False)
             if "state_dict" in sd:
                 sd = sd["state_dict"]
             elif "model" in sd:

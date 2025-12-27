@@ -2,9 +2,9 @@
 #!/bin/bash
 # Simple wrapper to run validation.py with a checkpoint
 
-DATA_DIR="data/MOTSA_classification"  # <-- Sửa lại đường dẫn này cho đúng bộ dữ liệu validation của bạn
-CHECKPOINT="output/20251226-024026-fastvit_ma36-256/model_best.pth.tar"
-MODEL_NAME="fastvit_ma36"  # <-- Sửa lại nếu tên model khác
+DATA_DIR="data/MOTSA_classification"  
+CHECKPOINT="output/20251227-033824-fastvit_ma36-256/model_best.pth.tar"
+MODEL_NAME="fastvit_ma36"  
 
 if [ -z "$CHECKPOINT" ]; then
 	echo "Usage: $0 <checkpoint_path>"

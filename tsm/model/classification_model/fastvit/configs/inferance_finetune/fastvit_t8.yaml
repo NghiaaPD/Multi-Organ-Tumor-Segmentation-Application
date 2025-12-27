@@ -1,0 +1,3 @@
+model:
+  _target_: tsm.model.classification_model.fastvit.modeling.fastvit.fastvit_t8
+  # Thêm các tham số khởi tạo model nếu cần
